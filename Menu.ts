@@ -1,10 +1,22 @@
 import readlinesync = require("readline-sync");
+import { colors } from './src/util/Colors';
+import { Conta } from './src/model/Conta'
 
 export function main() {
 
     let opcao: number;
 
+    const conta: Conta = new Conta(1, 123, 1, "Adriana", 10000);
+    conta.visualizar();
+    conta.sacar(10500);
+    conta.visualizar();
+    conta.depositar(5000);
+    conta.visualizar();
+
     while (true) {
+
+        console.log(colors.bg.black, colors.fg.magentastrong,
+            "************************************" )
 
         console.log("*****************************************************");
         console.log("                                                     ");
@@ -23,53 +35,65 @@ export function main() {
         console.log("            9 - Sair                                 ");
         console.log("                                                     ");
         console.log("*****************************************************");
-        console.log("                                                     ");
+        console.log("                                                     ",colors.reset);
+
 
         console.log("Entre com a opção desejada: ");
         opcao = readlinesync.questionInt("");
 
         if (opcao == 9) {
-            console.log("\nCarpenter Bank: Talhando oportunidades, lapidando conquistas.");
+            console.log(colors.bg.black, colors.fg.magentastrong,
+                "\nCarpenter Bank: Talhando oportunidades, lapidando conquistas.");
             sobre();
+            console.log(colors.reset,)
             process.exit(0);
         }
 
         switch (opcao) {
             case 1:
-                console.log("\n\nCriar Conta\n\n");
+                console.log(colors.bg.black, colors.fg.magentastrong,"\n\nCriar Conta\n\n",colors.reset);
 
+                keyPress()
                 break;
             case 2:
-                console.log("\n\nListar todas as Contas\n\n");
+                console.log(colors.bg.black, colors.fg.magentastrong,"\n\nListar todas as Contas\n\n",colors.reset);
 
+                keyPress()
                 break;
             case 3:
-                console.log("\n\nConsultar dados da Conta - por número\n\n");
+                console.log(colors.bg.black, colors.fg.magentastrong,"\n\nConsultar dados da Conta - por número\n\n",colors.reset);
 
+                keyPress()
                 break;
             case 4:
-                console.log("\n\nAtualizar dados da Conta\n\n");
+                console.log(colors.bg.black, colors.fg.magentastrong,"\n\nAtualizar dados da Conta\n\n",colors.reset);
 
+                keyPress()
                 break;
             case 5:
-                console.log("\n\nApagar uma Conta\n\n");
+                console.log(colors.bg.black, colors.fg.magentastrong,"\n\nApagar uma Conta\n\n",colors.reset);
 
+                keyPress()
                 break;
             case 6:
-                console.log("\n\nSaque\n\n");
+                console.log(colors.bg.black, colors.fg.magentastrong,"\n\nSaque\n\n",colors.reset);
 
+                keyPress()
                 break;
             case 7:
-                console.log("\n\nDepósito\n\n");
+                console.log(colors.bg.black, colors.fg.magentastrong,"\n\nDepósito\n\n",colors.reset);
 
+                keyPress()
                 break;
             case 8:
-                console.log("\n\nTransferência entre Contas\n\n");
+                console.log(colors.bg.black, colors.fg.magentastrong,"\n\nTransferência entre Contas\n\n",colors.reset);
 
+                keyPress()
                 break;
             default:
-                console.log("\nOpção Inválida!\n");
+                console.log(colors.bg.black, colors.fg.magentastrong,"\nOpção Inválida!\n",colors.reset);
 
+                keyPress()
                 break;
         }
     }
@@ -80,9 +104,15 @@ export function main() {
 export function sobre(): void {
     console.log("\n*****************************************************");
     console.log("Projeto Desenvolvido por: Winnie Sant'Ana ");
-    console.log("Generation Brasil - generation@generation.org");
+    console.log("Generation Brasil - winnies@genstudents.org");
     console.log("https://github.com/wssant/Conta_bancaria_Generation");
     console.log("*****************************************************");
+}
+
+function keyPress(): void {
+    console.log(colors.reset, "");
+    console.log("\nPressione enter para continuar...");
+    readlinesync.prompt();
 }
 
 main();
